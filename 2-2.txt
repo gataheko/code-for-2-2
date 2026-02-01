@@ -1,0 +1,56 @@
+// Import the Scanner class so we can get user input
+import java.util.Scanner;
+
+// Define the InvoiceApp class
+public class InvoiceApp {
+
+    // Main method – program execution starts here
+    public static void main(String[] args) {
+
+        // Display a welcome message
+        System.out.println("Welcome to the Invoice Total Calculator\n");
+
+        // Create a Scanner object to read input from the console
+        Scanner sc = new Scanner(System.in);
+
+        // Variable that controls the loop
+        String choice = "y";
+
+        // Loop continues while the user chooses "y"
+        while (choice.equalsIgnoreCase("y")) {
+
+            // Prompt the user for the invoice subtotal
+            System.out.print("Enter subtotal:   ");
+            String input = sc.nextLine();
+
+            // Convert the input String to a double
+            double subtotal = Double.parseDouble(input);
+
+            // Determine the discount percent
+            double discountPercent;
+            if (subtotal >= 200) {
+                discountPercent = 0.2;   // 20% discount
+            } else if (subtotal >= 100) {
+                discountPercent = 0.1;   // 10% discount
+            } else {
+                discountPercent = 0.0;   // No discount
+            }
+
+            // Calculate discount amount and invoice total
+            double discountAmount = subtotal * discountPercent;
+            double total = subtotal - discountAmount;
+
+            // Display the results
+            System.out.println(
+                    "Discount percent: " + discountPercent +
+                    "\nDiscount amount:  " + discountAmount +
+                    "\nInvoice total:    " + total + "\n"
+            );
+
+            // Ask the user if they want to continue
+            System.out.print("Continue? (y/n): ");
+            choice = sc.nextLine();
+            System.out.println(); // Print a blank line
+        }
+    }
+}
